@@ -52,7 +52,6 @@ class App(Tk):
         """
         if self.current_frame is not None:
             self.current_frame.destroy()
-        print(str(frame_name))
 
         new_frame = self.pages[frame_name](self)
         self.current_frame = new_frame
