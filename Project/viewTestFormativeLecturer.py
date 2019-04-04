@@ -36,15 +36,12 @@ class viewTestFormativeLecturer(Frame):
         rowCounter=10
         studentCounter=0
         self.takenTestList = []
-        print("got here VTFL.main()")
         for student in studentList:
             try:
                 testTrials = Test_record(user=student, testNumber=currentTest[0]).getTrials()
                 self.takenTestList.append(student)
                 Label(self.frameInCanvas, text=student).grid(row=rowCounter, column=0, padx=5, pady=5)
-                print("does it fuck up here?")
-                self.buttonList.append(Button(self.frameInCanvas, text='View test', command=lambda: self.viewTest(1)))
-                print(rowCounter,"\n"+str(studentCounter),"\n"+student,"\n",self.buttonList,"variable: check 3")
+                self.buttonList.append(Button(self.frameInCanvas, text='View test', command=lambda: self.viewTest(studentCounter)))
                 self.buttonList[studentCounter].grid(row=rowCounter, column=1, padx=5, pady=5)
                 rowCounter+=1
                 studentCounter += 1
@@ -52,7 +49,6 @@ class viewTestFormativeLecturer(Frame):
                 pass
 
         all_student_scores = []
-        print(self.takenTestList)
         for student in self.takenTestList:
             user = student
             Student_test_record = Test_record(user=user, testNumber=Tests().getCurrentTest()[0]).getTestScore()
